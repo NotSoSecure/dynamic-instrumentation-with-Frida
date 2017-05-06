@@ -20,8 +20,8 @@ def instrument_debugger_checks():
 		console.log(this.path);
 	  },
 	  onLeave: function (retval) {
-	    if (!retval.isNull() && this.path === '/data/app/com.devadvance.rootinspector-1/lib/arm/libnative2.so' && !didHookApis) {
-	      didHookApis = true;
+	    if(!retval.isNull() && this.path.indexOf('libnative2.so')!== -1 && !didHookApis) {
+		  didHookApis = true;
 	      console.log("File loaded hooking");
 	      hooknative2();
 	      // ...
